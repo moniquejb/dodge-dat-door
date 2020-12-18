@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+	<link rel="apple-touch-icon" href="/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="/favicon-144.png">
+	<meta name="msapplication-config" content="/browserconfig.xml"> -->
+    <title>DODGE DAT DOOR!</title>
+</head>
+<body>
+    <header id="header">
+        <div class="current-score score-box" id="current-score">
+            <p class="score-heading">
+                Current Score:
+            </p>
+            <p class="scores" id="score1">0</p>
+        </div>
+        <div class="empty" id="empty1"></div>
+        <div class="empty" id="empty2"></div>
+        <img src="./images/logo.png" alt="logo" class="logo" id="logo">
+        <div class="high-score score-box" id="high-score">
+            <p class="score-heading">
+                Highest Score:
+            </p>
+            <p class="scores" id="score2">0</p>
+        </div>
+    </header>
+    <div id="door-group" class="door-group">
+        <img src="./images/pink-closed.png" alt="pink door" class="door-indiv" id="pink-door">
+        <img src="./images/blue-closed.png" alt="blue door" class="door-indiv" id="blue-door">
+        <img src="./images/orange-closed.png" alt="orange door" class="door-indiv" id="orange-door">
+        <img src="./images/purple-closed.png" alt="purple door" class="door-indiv" id="purple-door">
+    </div>
+    <div class="button-div">
+        <div class="instruction-button-container button-container">
+            <button class="button" id="instructions-button">Instructions</button>
+        </div>
+        <div class="button-container">
+            <button class="button" id="button">Restart</button>
+        </div>
+    </div>
+    
+    <div class="popup" id="popup">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" id="close-btn">&times;</div>
+            <div class="instructions-container" id="instructions-container">
+                <div class="num-info">
+                    <div class="instruction-number">1</div>
+                    <div class="instruction-info move-right">Click on a door to find an empty corridor, a new room or a monster.</div>
+                </div>
+                <div class="num-info">
+                    <div class="instruction-number">2</div>
+                    <div class="instruction-info">A new room leads you to the next round, a monster ends your game.</div>
+                </div>
+                <div class="num-info">
+                    <div class="instruction-number">3</div>
+                    <div class="instruction-info">Complete 5 levels without running into a monster to flee the house and beat the game!</div>
+                </div>
+            </div>
+        </div>     
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

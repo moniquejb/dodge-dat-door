@@ -7,20 +7,42 @@ let toggleInstructions = document.getElementById("instructions-button");
 let closeInstructions = document.getElementById("close-btn");
 let currScore = document.getElementById("score1");
 let highScore = document.getElementById("score2");
+let doorsArr = document.getElementById('door-group').children;
 
 let newPinkDoor, newBlueDoor, newPurpleDoor, newOrangeDoor;
 let hasClickedPink = false;
 let hasClickedBlue = false;
 let hasClickedPurple = false;
 let hasClickedOrange = false;
+let gameoverDoors = ["", "", "", ""];
+let levelUpDoors = ["", "", "", ""];
 let level = 1;
 let scoreCount = 0;
 let highCount = 0;
 
+// Image preloader
+const preloadAndSet = async (images) => {
+    let load = images.map(async a => {
+        let img = new Image();
+        img.src = a;
+        return await new Promise(res => {
+            img.onload = () => res(img);
+        }) 
+    })
+        
+    const results = await Promise.all(load);
+
+    for (var i = 0; i < doorsArr.length; i++) {
+        doorsArr[i].setAttribute("src", images[i]);
+        }
+}
+
+// Toggle instructions pop up window
 const togglePopup = () => {
     document.getElementById("popup").classList.toggle("active");
 }
 
+// Randomise selection
 const shuffleArray = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -29,6 +51,7 @@ const shuffleArray = (arr) => {
     return arr;
 };
 
+// Place randomised selection according to door color and level
 const setLevel = (arr) => {
     let shuffledArr = shuffleArray(arr);
     newPinkDoor = `./images/pink-${shuffledArr[0]}.png`;
@@ -37,11 +60,10 @@ const setLevel = (arr) => {
     newOrangeDoor = `./images/orange-${shuffledArr[3]}.png`;
 };
 
+// Reset door images, has clicked status, styles and buttons
 const resetDoors = () => {
-    pinkDoor.src = "./images/pink-closed.png";
-    blueDoor.src = "./images/blue-closed.png";
-    purpleDoor.src = "./images/purple-closed.png";
-    orangeDoor.src = "./images/orange-closed.png";
+    let initialDoorImages = ["./images/pink-closed.png", "./images/blue-closed.png", "./images/orange-closed.png", "./images/purple-closed.png"];
+    preloadAndSet(initialDoorImages);
     hasClickedPink = false;
     hasClickedBlue = false;
     hasClickedPurple = false;
@@ -62,6 +84,7 @@ const resetDoors = () => {
     }
 };
 
+// Check if reset or level up scenario and either reset or set up & move to next level
 const resartOrLevelUp = () => {
     if(button.innerHTML === "Level up!" && level === 2){
         resetDoors();
@@ -82,37 +105,42 @@ const resartOrLevelUp = () => {
     }
 };
 
+// Check status of each door to determine which gameover image to set
 const checkGameOver = (color) => {
-    let setColor, setNewColor, setHasClicked;
+    let setColor, setNewColor, setHasClicked, colorIndex;
+    
     color === "pink" ? setColor = pinkDoor : color === "blue" ? setColor = blueDoor : color === "orange" ? setColor = orangeDoor : setColor = purpleDoor;
     color === "pink" ? setNewColor = newPinkDoor : color === "blue" ? setNewColor = newBlueDoor : color === "orange" ? setNewColor = newOrangeDoor : setNewColor = newPurpleDoor;
     color === "pink" ? setHasClicked = hasClickedPink : color === "blue" ? setHasClicked = hasClickedBlue : color === "orange" ? setHasClicked = hasClickedOrange : setHasClicked = hasClickedPurple;
+    color === "pink" ? colorIndex = 0 : color === "blue" ? colorIndex = 1 : color === "orange" ? colorIndex = 2 : colorIndex = 3;
 
     if(setNewColor === `./images/${color}-spook.png` && setHasClicked){
-        setColor.src = `./images/spook-gameover.png`;
+        gameoverDoors[colorIndex] = `./images/spook-gameover.png`;
     } else if(setNewColor === `./images/${color}-open.png` && setHasClicked){
-        setColor.src = `./images/open-gameover.png`;
+        gameoverDoors[colorIndex] = `./images/open-gameover.png`;
     } else if(setNewColor === `./images/${color}-open-2.png` && setHasClicked){
-        setColor.src = `./images/open-gameover.png`;
+        gameoverDoors[colorIndex] = `./images/open-gameover.png`;
     } else {
-        setColor.src = `./images/${color}-gameover.png`;
+        gameoverDoors[colorIndex] = `./images/${color}-gameover.png`;
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true : color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
     }
 };
 
+// Initiate gameover routine
 const gameOver = () => {
     button.innerHTML = "Game Over"
-    // button.style.width = "180px";
     button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
     button.style.borderColor = "#ba2025";
     button.style.color = "white";
 
     checkGameOver('pink');
     checkGameOver('blue');
-    checkGameOver('purple');
     checkGameOver('orange');
+    checkGameOver('purple');
+    preloadAndSet(gameoverDoors);
 };
 
+// Increment score
 const addToScore = () => {
     scoreCount++;
     currScore.innerHTML = scoreCount;
@@ -123,37 +151,40 @@ const addToScore = () => {
     }
 };
 
+// Check status of each door to determine which level up image to set
 const checkClearedLevel = (color) => {
-    let setColor, setNewColor, setHasClicked;
+    let setColor, setNewColor, setHasClicked, colorIndex;
     color === "pink" ? setColor = pinkDoor : color === "blue" ? setColor = blueDoor : color === "orange" ? setColor = orangeDoor : setColor = purpleDoor;
     color === "pink" ? setNewColor = newPinkDoor : color === "blue" ? setNewColor = newBlueDoor : color === "orange" ? setNewColor = newOrangeDoor : setNewColor = newPurpleDoor;
     color === "pink" ? setHasClicked = hasClickedPink : color === "blue" ? setHasClicked = hasClickedBlue : color === "orange" ? setHasClicked = hasClickedOrange : setHasClicked = hasClickedPurple;
+    color === "pink" ? colorIndex = 0 : color === "blue" ? colorIndex = 1 : color === "orange" ? colorIndex = 2 : colorIndex = 3;
 
     if(setNewColor == `./images/${color}-kitchen.png` && setHasClicked){
-        setColor.src = `./images/kitchen-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/kitchen-levelup.png`;
         addToScore();
     } else if(setNewColor == `./images/${color}-lounge.png` && setHasClicked){
-        setColor.src = `./images/lounge-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/lounge-levelup.png`;
         addToScore();
     } else if(setNewColor == `./images/${color}-bedroom.png` && setHasClicked){
-        setColor.src = `./images/bedroom-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/bedroom-levelup.png`;
         addToScore();
     } else if(setNewColor == `./images/${color}-bathroom.png` && setHasClicked){
-        setColor.src = `./images/bathroom-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/bathroom-levelup.png`;
         addToScore();
     } else if(setNewColor == `./images/${color}-hills.png` && setHasClicked){
-        setColor.src = `./images/hills-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/hills-levelup.png`;
         addToScore();
     } else if(setNewColor == `./images/${color}-open.png` && setHasClicked){
-        setColor.src = `./images/open-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/open-levelup.png`;
     } else if(setNewColor === `./images/${color}-open-2.png` && setHasClicked){
-        setColor.src = `./images/open-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/open-levelup.png`;
     } else {
-        setColor.src = `./images/${color}-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/${color}-levelup.png`;
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true :  color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
     }
 };
 
+// Check if level was cleared but game not completed
 const clearedNotWon = () => {
     button.innerHTML = "Level up!";
     button.style.borderColor = "#7dc35f";
@@ -162,20 +193,23 @@ const clearedNotWon = () => {
     level++;
 };
 
+// Initiate cleared level routine
 const clearedLevel = () => {
     checkClearedLevel('pink');
     checkClearedLevel('blue');
     checkClearedLevel('purple');
     checkClearedLevel('orange');
+    preloadAndSet(levelUpDoors);
 };
 
+// Initiate game completed routine
 const winGame = () => {
     button.classList.add('animate__animated', 'animate__tada');
-    // button.style.width = "300px";
     button.style.borderColor = "#f8cf72";
     button.innerHTML = "YOU WIN! Start again?";
 };
 
+// Determine what happens when a door is clicked
 const clickColor = (color) => {
     let setColor, setNewColor, setHasClicked;
     color === "pink" ? setColor = pinkDoor : color === "blue" ? setColor = blueDoor : color === "orange" ? setColor = orangeDoor : setColor = purpleDoor;
@@ -187,11 +221,7 @@ const clickColor = (color) => {
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true : color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
         if(setNewColor === `./images/${color}-spook.png`){
             gameOver();
-        } else if([`./images/${color}-kitchen.png`, `./images/${color}-lounge.png`, `./images/${color}-bedroom.png`, `./images/${color}-bathroom.png`].includes(setNewColor))
-           /* setNewColor === `./images/${color}-kitchen.png` ||
-            setNewColor === `./images/${color}-lounge.png` ||
-            setNewColor === `./images/${color}-bedroom.png` ||
-            setNewColor === `./images/${color}-bathroom.png`)*/{
+        } else if([`./images/${color}-kitchen.png`, `./images/${color}-lounge.png`, `./images/${color}-bedroom.png`, `./images/${color}-bathroom.png`].includes(setNewColor)) {
             clearedLevel();
             clearedNotWon();
         } else if (setNewColor === `./images/${color}-hills.png`){
@@ -201,14 +231,19 @@ const clickColor = (color) => {
     }
 };
 
+// Set correct door types for first level
 setLevel(["open", "spook", "kitchen", "open-2"]);
 
-button.addEventListener("click", resartOrLevelUp);
-
+// -- Event listeners --
+// Toggle instructions pop up window
 toggleInstructions.addEventListener("click", togglePopup);
-
 closeInstructions.addEventListener("click", togglePopup);
 
+// Reset on click
+button.addEventListener("click", resartOrLevelUp);
+
+
+// Individual door event listeners
 pinkDoor.addEventListener("click", function clickPink() {
     clickColor('pink');
 });

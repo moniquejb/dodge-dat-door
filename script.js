@@ -133,11 +133,12 @@ const gameOver = () => {
     checkGameOver('orange');
     checkGameOver('purple');
     preloadAndSet(gameoverDoors);
-
-    button.innerHTML = "Game Over"
-    button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
-    button.style.borderColor = "#ba2025";
-    button.style.color = "white";
+    setTimeout(function gameoverButton(){
+        button.innerHTML = "Game Over"
+        button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
+        button.style.borderColor = "#ba2025";
+        button.style.color = "white";
+    }, 500);
 };
 
 // Increment score
@@ -186,11 +187,13 @@ const checkClearedLevel = (color) => {
 
 // Check if level was cleared but game not completed
 const clearedNotWon = () => {
-    button.innerHTML = "Level up!";
-    button.style.borderColor = "#7dc35f";
-    button.style.color = "white";
-    button.classList.add('animate__animated', 'animate__heartBeat');
-    level++;
+    setTimeout(function levelUpButton(){
+        button.innerHTML = "Level up!";
+        button.style.borderColor = "#7dc35f";
+        button.style.color = "white";
+        button.classList.add('animate__animated', 'animate__heartBeat');
+        level++;
+    }, 500); 
 };
 
 // Initiate cleared level routine

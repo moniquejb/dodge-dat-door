@@ -68,8 +68,6 @@ const resetDoors = () => {
     hasClickedBlue = false;
     hasClickedPurple = false;
     hasClickedOrange = false;
-    // button.style.width = "180px";
-    // button.style.height = "45px";
     button.style.borderColor = "#615658";
     button.style.color = "#f8cf72";
 
@@ -138,7 +136,7 @@ const gameOver = () => {
         button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
         button.style.borderColor = "#ba2025";
         button.style.color = "white";
-    }, 500);
+    }, 100);
 };
 
 // Increment score
@@ -193,7 +191,7 @@ const clearedNotWon = () => {
         button.style.color = "white";
         button.classList.add('animate__animated', 'animate__heartBeat');
         level++;
-    }, 500); 
+    }, 100); 
 };
 
 // Initiate cleared level routine

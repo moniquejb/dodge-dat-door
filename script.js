@@ -128,16 +128,16 @@ const checkGameOver = (color) => {
 
 // Initiate gameover routine
 const gameOver = () => {
-    button.innerHTML = "Game Over"
-    button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
-    button.style.borderColor = "#ba2025";
-    button.style.color = "white";
-
     checkGameOver('pink');
     checkGameOver('blue');
     checkGameOver('orange');
     checkGameOver('purple');
     preloadAndSet(gameoverDoors);
+
+    button.innerHTML = "Game Over"
+    button.classList.add('animate__animated', 'animate__headShake', 'animate__slower');
+    button.style.borderColor = "#ba2025";
+    button.style.color = "white";
 };
 
 // Increment score

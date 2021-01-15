@@ -218,7 +218,6 @@ const clickColor = (color) => {
     color === "pink" ? setHasClicked = hasClickedPink : color === "blue" ? setHasClicked = hasClickedBlue : color === "orange" ? setHasClicked = hasClickedOrange : setHasClicked = hasClickedPurple;
 
     if(!setHasClicked){
-        setColor.src = setNewColor;
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true : color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
         if(setNewColor === `./images/${color}-spook.png`){
             gameOver();
@@ -228,6 +227,8 @@ const clickColor = (color) => {
         } else if (setNewColor === `./images/${color}-hills.png`){
             clearedLevel();
             winGame();
+        } else {
+            setColor.src = setNewColor;
         }
     }
 };

@@ -16,6 +16,11 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    height: -webkit-calc(calc(var(--vh, 1vh) * 100));
+    height: -moz-calc(calc(var(--vh, 1vh) * 100));
+    height: expression(calc(var(--vh, 1vh) * 100));
+    height: -o-calc(calc(var(--vh, 1vh) * 100));
+    height: calc(calc(var(--vh, 1vh) * 100));
     background-image: url('images/brick-bg.png');
     background-size: 300px;
     background-repeat: repeat;

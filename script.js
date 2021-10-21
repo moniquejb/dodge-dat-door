@@ -10,6 +10,7 @@ let highScore = document.getElementById("score2");
 let doorsArr = document.getElementById('door-group').children;
 
 let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 let newPinkDoor, newBlueDoor, newPurpleDoor, newOrangeDoor;
 let hasClickedPink = false;

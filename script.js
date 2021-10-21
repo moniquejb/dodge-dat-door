@@ -9,6 +9,8 @@ let currScore = document.getElementById("score1");
 let highScore = document.getElementById("score2");
 let doorsArr = document.getElementById('door-group').children;
 
+let vh = window.innerHeight * 0.01;
+
 let newPinkDoor, newBlueDoor, newPurpleDoor, newOrangeDoor;
 let hasClickedPink = false;
 let hasClickedBlue = false;

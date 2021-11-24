@@ -2,7 +2,7 @@
 
 # 'Dodge Dat Door!' Game
 
-[Dodge Dat Door!](https://moniquejb.github.io/dodge-dat-door/) was a personal project I created to practice what I had learnt about HTML, CSS and JavaScript at that time. My goal was to create something from scratch- this included the coding, the imagery and the logo- that was functioning, responsive and available online. Although I believe I achieved that goal, I will admit that the responsivity could be improved because I have since learnt more effective ways to do this.
+[Dodge Dat Door!](https://moniquejb.github.io/dodge-dat-door/) was a personal project I created to practice what I had learnt about HTML, CSS and JavaScript at that time. My goal was to create something from scratch- this included the coding, the imagery and the logo- that was functioning, responsive and available online. Although I believe I achieved that goal, I will admit that the responsivity has to be rechecked and improved because I have since learnt more effective ways to do this.
 
 ## Technologies
 * JavaScript

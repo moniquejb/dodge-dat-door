@@ -1,4 +1,4 @@
-[![Untitled-1-01.jpg](https://i.postimg.cc/2S5yYy0r/Untitled-1-01.jpg)](https://postimg.cc/4mrsbfCS)
+[![Banner](https://i.postimg.cc/2S5yYy0r/Untitled-1-01.jpg)](https://postimg.cc/4mrsbfCS)
 
 # 'Dodge Dat Door!' Game
 
@@ -16,6 +16,6 @@ The game itself is simple (but coding the logic definitely gave me a headache at
 ### Design
 As I was formally trained as an Information Designer, I took advantage of those skills to design or adapt the visual elements used in this project (logo, background, images colour scheme). The below screenshot shows parts of different working files in Adobe Illustrator when developing the website layout, logo, favicon and creating the images necessary for each door state (52 doors to be exact! :door:).
 
-[![image.png](https://i.postimg.cc/kg1463TQ/image.png)](https://postimg.cc/18FP2ThX)
+[![Layout](https://i.postimg.cc/kg1463TQ/image.png)](https://postimg.cc/18FP2ThX)
 
 [![LinkedIn badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/monique-blignaut-48173485) [![Instagram badge](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/monique.jaimee/) [![Behance badge](https://img.shields.io/badge/Behance-blue?style=for-the-badge&logo=behance)](https://www.behance.net/MoniqueBlignaut) [![Gmail badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:moniblig@gmail.com)

@@ -1,3 +1,4 @@
+// DOM selectors
 let pinkDoor = document.getElementById("pink-door");
 let blueDoor = document.getElementById("blue-door");
 let purpleDoor = document.getElementById("purple-door");
@@ -71,15 +72,15 @@ const shuffleArray = (arr) => {
 // Place randomised selection according to door color and level
 const setLevel = (arr) => {
     let shuffledArr = shuffleArray(arr);
-    newPinkDoor = `./images/pink-${shuffledArr[0]}.png`;
-    newBlueDoor = `./images/blue-${shuffledArr[1]}.png`;
-    newPurpleDoor = `./images/purple-${shuffledArr[2]}.png`;
-    newOrangeDoor = `./images/orange-${shuffledArr[3]}.png`;
+    newPinkDoor = `./images/pink-${shuffledArr[0]}.svg`;
+    newBlueDoor = `./images/blue-${shuffledArr[1]}.svg`;
+    newPurpleDoor = `./images/purple-${shuffledArr[2]}.svg`;
+    newOrangeDoor = `./images/orange-${shuffledArr[3]}.svg`;
 };
 
 // Reset door images, has clicked status, styles and buttons
 const resetDoors = () => {
-    let initialDoorImages = ["./images/pink-closed.png", "./images/blue-closed.png", "./images/orange-closed.png", "./images/purple-closed.png"];
+    let initialDoorImages = ["./images/pink-closed.svg", "./images/blue-closed.svg", "./images/orange-closed.svg", "./images/purple-closed.svg"];
     preloadAndSet(initialDoorImages);
     hasClickedPink = false;
     hasClickedBlue = false;
@@ -129,14 +130,14 @@ const checkGameOver = (color) => {
     color === "pink" ? setHasClicked = hasClickedPink : color === "blue" ? setHasClicked = hasClickedBlue : color === "orange" ? setHasClicked = hasClickedOrange : setHasClicked = hasClickedPurple;
     color === "pink" ? colorIndex = 0 : color === "blue" ? colorIndex = 1 : color === "orange" ? colorIndex = 2 : colorIndex = 3;
 
-    if(setNewColor === `./images/${color}-spook.png` && setHasClicked){
-        gameoverDoors[colorIndex] = `./images/spook-gameover.png`;
-    } else if(setNewColor === `./images/${color}-open.png` && setHasClicked){
-        gameoverDoors[colorIndex] = `./images/open-gameover.png`;
-    } else if(setNewColor === `./images/${color}-open-2.png` && setHasClicked){
-        gameoverDoors[colorIndex] = `./images/open-gameover.png`;
+    if(setNewColor === `./images/${color}-spook.svg` && setHasClicked){
+        gameoverDoors[colorIndex] = `./images/spook-gameover.svg`;
+    } else if(setNewColor === `./images/${color}-open.svg` && setHasClicked){
+        gameoverDoors[colorIndex] = `./images/open-gameover.svg`;
+    } else if(setNewColor === `./images/${color}-open-2.svg` && setHasClicked){
+        gameoverDoors[colorIndex] = `./images/open-gameover.svg`;
     } else {
-        gameoverDoors[colorIndex] = `./images/${color}-gameover.png`;
+        gameoverDoors[colorIndex] = `./images/${color}-gameover.svg`;
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true : color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
     }
 };
@@ -175,27 +176,27 @@ const checkClearedLevel = (color) => {
     color === "pink" ? setHasClicked = hasClickedPink : color === "blue" ? setHasClicked = hasClickedBlue : color === "orange" ? setHasClicked = hasClickedOrange : setHasClicked = hasClickedPurple;
     color === "pink" ? colorIndex = 0 : color === "blue" ? colorIndex = 1 : color === "orange" ? colorIndex = 2 : colorIndex = 3;
 
-    if(setNewColor == `./images/${color}-kitchen.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/kitchen-levelup.png`;
+    if(setNewColor == `./images/${color}-kitchen.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/kitchen-levelup.svg`;
         addToScore();
-    } else if(setNewColor == `./images/${color}-lounge.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/lounge-levelup.png`;
+    } else if(setNewColor == `./images/${color}-lounge.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/lounge-levelup.svg`;
         addToScore();
-    } else if(setNewColor == `./images/${color}-bedroom.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/bedroom-levelup.png`;
+    } else if(setNewColor == `./images/${color}-bedroom.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/bedroom-levelup.svg`;
         addToScore();
-    } else if(setNewColor == `./images/${color}-bathroom.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/bathroom-levelup.png`;
+    } else if(setNewColor == `./images/${color}-bathroom.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/bathroom-levelup.svg`;
         addToScore();
-    } else if(setNewColor == `./images/${color}-hills.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/hills-levelup.png`;
+    } else if(setNewColor == `./images/${color}-hills.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/hills-levelup.svg`;
         addToScore();
-    } else if(setNewColor == `./images/${color}-open.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/open-levelup.png`;
-    } else if(setNewColor === `./images/${color}-open-2.png` && setHasClicked){
-        levelUpDoors[colorIndex] = `./images/open-levelup.png`;
+    } else if(setNewColor == `./images/${color}-open.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/open-levelup.svg`;
+    } else if(setNewColor === `./images/${color}-open-2.svg` && setHasClicked){
+        levelUpDoors[colorIndex] = `./images/open-levelup.svg`;
     } else {
-        levelUpDoors[colorIndex] = `./images/${color}-levelup.png`;
+        levelUpDoors[colorIndex] = `./images/${color}-levelup.svg`;
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true :  color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
     }
 };
@@ -236,12 +237,12 @@ const clickColor = (color) => {
 
     if(!setHasClicked){
         color === "pink" ? hasClickedPink = true : color === "blue" ? hasClickedBlue = true : color === "orange" ? hasClickedOrange = true : hasClickedPurple = true;
-        if(setNewColor === `./images/${color}-spook.png`){
+        if(setNewColor === `./images/${color}-spook.svg`){
             gameOver();
-        } else if([`./images/${color}-kitchen.png`, `./images/${color}-lounge.png`, `./images/${color}-bedroom.png`, `./images/${color}-bathroom.png`].includes(setNewColor)) {
+        } else if([`./images/${color}-kitchen.svg`, `./images/${color}-lounge.svg`, `./images/${color}-bedroom.svg`, `./images/${color}-bathroom.svg`].includes(setNewColor)) {
             clearedLevel();
             clearedNotWon();
-        } else if (setNewColor === `./images/${color}-hills.png`){
+        } else if (setNewColor === `./images/${color}-hills.svg`){
             clearedLevel();
             winGame();
         } else {

@@ -21,7 +21,7 @@ body {
     height: expression(calc(var(--vh, 1vh) * 100));
     height: -o-calc(calc(var(--vh, 1vh) * 100));
     height: calc(calc(var(--vh, 1vh) * 100));
-    background-image: url('images/brick-bg.png');
+    background-image: url('images/brick-bg.svg');
     background-size: 300px;
     background-repeat: repeat;
     background-color: #7f9cad;
